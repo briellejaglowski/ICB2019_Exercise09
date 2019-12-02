@@ -24,3 +24,5 @@ s=a+geom_jitter(aes(color=region), alpha=0.25, size=2)+
   guides(color=FALSE)
 s
 
+#Answer: Yes, the bar and scatter plots do tell different stories.
+#The scatter plot shows the distributions of the data, which is not apparent when the data is represented as bars instead.
