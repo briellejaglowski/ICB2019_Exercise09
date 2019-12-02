@@ -11,3 +11,9 @@ da=read.csv("data.txt", stringsAsFactors = F, header=T)
 a=ggplot(data=da, aes(x=region, y=observations))+
   theme_bw()+theme(panel.grid = element_blank())+ 
   xlab("Region")+ylab("Observations")
+means=aggregate(formula=observations~region, data=da, FUN = mean)
+b=a+stat_summary(fun.y=mean, geom="bar", aes(fill=region, color=region), alpha=0.5)+
+  stat_summary(fun.data=mean_se, geom="errorbar", width=0.4)+
+  guides(fill=FALSE, color=FALSE)+
+  geom_text(data = means, aes(label= round(observations), y = observations + 1))
+b
