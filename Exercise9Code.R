@@ -2,7 +2,15 @@ library(ggplot2)
 library(cowplot)
 
 #1
+turtles=read.table("turtlecloud.txt", sep="\t", header=T, stringsAsFactors = F)
 
+sp=ggplot(turtles, aes(x=TurtleNum, y=CloudCover))+
+  theme_bw()+theme(panel.grid = element_blank(),
+                   plot.title = element_text(hjust = 0.4, size = 11))+
+  geom_point()+stat_smooth(method="lm", color="green")+
+  xlab("TurtleNum")+ylab("CloudCover")+
+  ggtitle("Relationship between Number of Basking Sea Turtles\n and % Cloud Cover on Ho'okipa Beach")
+sp
 
 #2
 da=read.csv("data.txt", stringsAsFactors = F, header=T)
